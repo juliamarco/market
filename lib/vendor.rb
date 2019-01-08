@@ -7,4 +7,12 @@ class Vendor
     @inventory = {}
   end
 
+  def check_stock(item)
+    if inventory.has_key?(item)
+      return inventory[item]
+    else
+      return 0
+    end
+  end
+
 end

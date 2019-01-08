@@ -8,19 +8,20 @@ class Vendor
   end
 
   def check_stock(item)
-    if inventory.has_key?(item)
-      return inventory[item]
+    if @inventory.has_key?(item)
+      return @inventory[item]
     else
       return 0
     end
   end
 
   def stock(item, quantity)
-    if inventory.has_key?(item)
-      inventory[item] << quantity
+    if @inventory.has_key?(item)
+      @inventory[item] << quantity
     else
-      inventory[item] = quantity
+      @inventory[item] = quantity
     end
+    binding.pry
   end
 
 end

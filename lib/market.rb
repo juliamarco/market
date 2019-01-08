@@ -45,6 +45,19 @@ class Market
     end
   end
 
+  def sell(item, qty)
+    inventory = total_inventory
+    if inventory.include?(item)
+      if inventory[item] >= qty
+        return true
+      else
+        return false
+      end
+    else
+      return false
+    end
+  end
+
 
 
 end

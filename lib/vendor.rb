@@ -17,11 +17,10 @@ class Vendor
 
   def stock(item, quantity)
     if @inventory.has_key?(item)
-      @inventory[item] << quantity
+      @inventory[item] += quantity
     else
       @inventory[item] = quantity
     end
-    binding.pry
   end
 
 end

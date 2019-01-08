@@ -43,4 +43,22 @@ class MarketTest < Minitest::Test
     assert_equal [vendor_1, vendor_2, vendor_3], market.vendors
   end
 
+  def test_it_can_access_its_vendors_names
+
+    market = Market.new("South Pearl Street Farmers Market")
+    vendor_1 = Vendor.new("Rocky Mountain Fresh")
+    vendor_1.stock("Peaches", 35)
+    vendor_1.stock("Tomatoes", 7)
+    vendor_2 = Vendor.new("Ba-Nom-a-Nom")
+    vendor_2.stock("Banana Nice Cream", 50)
+    vendor_2.stock("Peach-Raspberry Nice Cream", 25)
+    vendor_3 = Vendor.new("Palisade Peach Shack")
+    vendor_3.stock("Peaches", 65)
+    market.add_vendor(vendor_1)
+    market.add_vendor(vendor_2)
+    market.add_vendor(vendor_3)
+
+    assert_equal ["Rocky Mountain Fresh", "Ba-Nom-a-Nom", "Palisade Peach Shack"], market.vendor_names
+  end
+
 end

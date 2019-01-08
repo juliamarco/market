@@ -36,5 +36,15 @@ class Market
     items.flatten.uniq.sort
   end
 
+  def total_inventory
+  inventories = get_inventories
+    inventories.inject do |total, actual|
+      total.merge(actual) do |item, old_qty, new_qty|
+        old_qty + new_qty
+      end
+    end
+  end
+
+
 
 end

@@ -23,4 +23,18 @@ class Market
     end
   end
 
+  def get_inventories
+    @vendors.map do |vendor|
+      vendor.inventory
+    end
+  end
+
+  def sorted_item_list
+    inventories = get_inventories
+    items = []
+    inventories.each { |inventory| items << inventory.keys}
+    items.flatten.uniq.sort
+  end
+
+
 end

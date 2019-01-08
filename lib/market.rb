@@ -45,10 +45,22 @@ class Market
     end
   end
 
+  def deduct_qty(item, qty)
+    @vendors.each do |vendor|
+      if vendor.inventory.include?(item)
+        until qty == 0 || vendor.inventory[item] == 0
+          vendor.inventory[item] -= 1
+          qty -= 1
+        end
+      end
+    end
+  end
+
   def sell(item, qty)
     inventory = total_inventory
     if inventory.include?(item)
       if inventory[item] >= qty
+        deduct_qty(item, qty)
         return true
       else
         return false
@@ -57,7 +69,5 @@ class Market
       return false
     end
   end
-
-
 
 end
